@@ -10,5 +10,21 @@ import { ProductsService } from '../../../services/products/products.service';
 })
 export class ProductComponent {
   @Input({ required: true }) product!: Product;
-  constructor() {}
+  id: string | null = '';
+  constructor(
+    private route: ActivatedRoute,
+    private productsService: ProductsService
+  ) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((data) => {
+      this.id = data.get('id');
+    });
+
+    if (this.id) {
+      this.productsService.getProductById(this.id).subscribe((product) => {
+        this.product = product;
+      });
+    }
+  }
 }

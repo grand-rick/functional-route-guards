@@ -1,5 +1,5 @@
 <div class="products-container">
-  @for(product of products.splice(0, 20); track product;) {
+  @for(product of products; track product;) {
   <app-product
     routerLink="/products/{{ product.id }}"
     [product]="product"
