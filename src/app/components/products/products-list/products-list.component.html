@@ -1,0 +1,9 @@
+<div class="products-container">
+  @for(product of products; track product;) {
+  <app-product
+    routerLink="/products/{{ product.id }}"
+    class="pointer"
+    [product]="product"
+  ></app-product>
+  }
+</div>

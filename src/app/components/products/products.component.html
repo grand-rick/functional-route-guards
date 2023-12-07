@@ -1,8 +1,13 @@
-<div class="products-container">
-  @for(product of products; track product;) {
-  <app-product
-    routerLink="/products/{{ product.id }}"
-    [product]="product"
-  ></app-product>
-  }
+<div class="products-header">
+  <button mat-raised-button color="primary" routerLink="/products/add">
+    Add Product
+  </button>
+  <button mat-raised-button color="primary" routerLink="/products/all">
+    Fetch All Products
+  </button>
 </div>
+
+<div class="prod-content">
+  <h1>This is the products page</h1>
+</div>
+<router-outlet></router-outlet>
