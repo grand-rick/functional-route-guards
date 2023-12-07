@@ -5,18 +5,15 @@ import { HomeComponent } from './main/home/home.component';
 import { AboutComponent } from './main/about/about.component';
 import { ContactComponent } from './main/contact/contact.component';
 import { LoginComponent } from './main/login/login.component';
-import { loginGuard } from './guards/login.guard';
-import { contactGuard } from './guards/contact.guard';
 import { NotFoundComponent } from './main/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent, canActivate: [loginGuard] },
+  { path: 'about', component: AboutComponent },
   {
     path: 'contact',
     component: ContactComponent,
-    canDeactivate: [contactGuard],
   },
   {
     path: 'products',
