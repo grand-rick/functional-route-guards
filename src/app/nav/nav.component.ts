@@ -14,11 +14,16 @@ export class NavComponent {
   private breakpointObserver = inject(BreakpointObserver);
   private authService = inject(AuthService);
   private router = inject(Router);
-  isLoggedin = false;
+  isUserLoggedIn = false;
+  isAdminLoggedIn = false;
 
   ngOnInit(): void {
-    this.authService.loginStatus.subscribe((status) => {
-      this.isLoggedin = status;
+    this.authService.userLoginStatus.subscribe((status) => {
+      this.isUserLoggedIn = status;
+    });
+
+    this.authService.adminLoginStatus.subscribe((status) => {
+      this.isAdminLoggedIn = status;
     });
   }
 

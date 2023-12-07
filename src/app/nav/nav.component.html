@@ -13,6 +13,11 @@
       <a mat-list-item routerLink="/about">About</a>
       <a mat-list-item routerLink="/contact">Contact</a>
       <a mat-list-item routerLink="/products">Products</a>
+      @if (!isUserLoggedIn) {
+      <a mat-list-item routerLink="/login">Log In</a>
+      } @if (isAdminLoggedIn) {
+      <a mat-list-item routerLink="/admin"> Admin Dashboard </a>
+      }
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -28,8 +33,10 @@
       </button>
       <div class="top-nav">
         <p>My App</p>
-        @if (isLoggedin) {
-        <button mat-raised-button (click)="logOut()">Log Out</button>
+        @if (isUserLoggedIn) {
+        <button mat-raised-button class="log-out-btn" (click)="logOut()">
+          Log Out
+        </button>
         }
       </div>
     </mat-toolbar>

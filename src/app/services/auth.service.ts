@@ -7,24 +7,39 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   constructor() {}
   isLoggedIn = false;
-  loginStatus = new BehaviorSubject<boolean>(this.hasAccess());
+  isAdmin = false;
+  userLoginStatus = new BehaviorSubject<boolean>(this.hasUserAccess());
+  adminLoginStatus = new BehaviorSubject<boolean>(this.hasAdminAccess());
 
   login(userDetails: { email: string; password: string }): boolean {
     const { email, password } = userDetails;
-    if (email === 'user@gmail.com' && password === 'User') {
+
+    if (email === 'admin@gmail.com' && password === 'Admin') {
+      this.isAdmin = true;
       this.isLoggedIn = true;
-      this.loginStatus.next(this.isLoggedIn);
-      return true;
+      this.userLoginStatus.next(this.isLoggedIn);
+      this.adminLoginStatus.next(this.isAdmin);
+    } else if (email === 'user@gmail.com' && password === 'User') {
+      this.isLoggedIn = true;
+      this.isAdmin = false;
+      this.userLoginStatus.next(this.isLoggedIn);
+      this.adminLoginStatus.next(this.isAdmin);
     }
-    return false;
+    return this.isLoggedIn;
   }
 
   logout(): void {
     this.isLoggedIn = false;
-    this.loginStatus.next(this.isLoggedIn);
+    this.isAdmin = false;
+    this.userLoginStatus.next(this.isLoggedIn);
+    this.adminLoginStatus.next(this.isAdmin);
   }
 
-  hasAccess(): boolean {
+  hasUserAccess(): boolean {
     return this.isLoggedIn;
+  }
+
+  hasAdminAccess(): boolean {
+    return this.isAdmin;
   }
 }

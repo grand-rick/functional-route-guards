@@ -6,33 +6,14 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
+import materialModules from './shared/shared.module';
 
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { ProductsComponent } from './components/products/products.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
-
-const materialModules = [
-  MatSidenavModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatListModule,
-  MatSelectModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatButtonModule,
-];
+import { HttpClientModule } from '@angular/common/http';
 
 const components = [
   AppComponent,
@@ -40,7 +21,6 @@ const components = [
   HomeComponent,
   AboutComponent,
   ContactComponent,
-  ProductsComponent,
   AdminComponent,
   LoginComponent,
 ];
@@ -51,6 +31,7 @@ const components = [
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     materialModules,
   ],
   providers: [],
