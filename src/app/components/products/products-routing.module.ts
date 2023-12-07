@@ -5,6 +5,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsComponent } from './products.component';
 import { productGuard } from './guards/product.guard';
+import { productsResolver } from '../../resolvers/products.resolver';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
       {
         path: 'all',
         component: ProductsListComponent,
+        resolve: {
+          products: productsResolver,
+        },
       },
       {
         path: 'add',
