@@ -8,14 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import materialModules from './shared/shared.module';
 
-import { HomeComponent } from './components/home/home.component';
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './main/home/home.component';
+import { AboutComponent } from './main/about/about.component';
+import { ContactComponent } from './main/contact/contact.component';
+import { AdminComponent } from './main/admin/admin.component';
+import { LoginComponent } from './main/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NotFoundComponent } from './main/not-found/not-found.component';
 
-const components = [
+const main = [
   AppComponent,
   NavComponent,
   HomeComponent,
@@ -25,7 +26,7 @@ const components = [
   LoginComponent,
 ];
 @NgModule({
-  declarations: [components],
+  declarations: [main, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
